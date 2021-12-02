@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/theme.min.css" data-skin="default">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <div class="app-main">
+            <div class="wrapper">
+                <div class="container">
+                    <div class="page has-sidebar"><div class="sidebar-backdrop"></div>
+                        <div class="page-inner">
+                            <div class="page-section">
+                                <table id="myTable" class="table dataTable no-footer">
+                                    <thead>
+                                      <tr>
+                                        <th id="sortBtnName" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="2"> Name </th>
+                                        <th id="sortBtnItr" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Inventory </th>
+                                        <th id="sortBtnVr" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Variants </th>
+                                        <th id="sortBtnPrs" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Prices </th>
+                                        <th id="sortBtnDate" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Date </th>
+                                        <th style="width:100px; min-width:100px;"> &nbsp; </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="orderBox"></tbody>
+                                </table>
+                            </div>
+                            <div class="page-sidebar">
+                                <div class="sidebar-section">
+                                    <button type="button" class="close mt-n1 d-none d-sm-block" data-toggle="sidebar" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <h6> Write your order: </h6>
+                                    <p>Name:</p>
+                                    <input id="GetName" type="text" class="form-control mb-3" placeholder="Type something...">
+                                    <p>Inventory:</p>
+                                    <input id="GetInventory" type="text" class="form-control mb-3" placeholder="Type something...">
+                                    <p>Variants:</p>
+                                    <input id="GetVariants" type="text" class="form-control mb-3" placeholder="Type something...">
+                                    <p>Prices:</p>
+                                    <input id="GetPrices" type="text" class="form-control mb-3 input-price" placeholder="Enter price..." />
+                                    <button id="changeOrder" type="button" class="btn btn-outline-dark d-none" data-toggle="sidebar">Изменить</button>
+                                    <button id="addOrder" type="button" class="btn btn-outline-dark" data-toggle="sidebar">Добавить</button>
+                                    <button id="exitOrder" type="button" class="btn btn-outline-dark" data-toggle="sidebar">Отменить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+    <button id="addBtnTo" type="button" class="btn btn-success btn-floated" data-toggle="sidebar"><span class="fa fa-plus"></span></button>
+    <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Вы уверены ?</h5>
+              <button type="button" class="btn-close close d-none d-sm-block" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                Подтвердите действие:
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+              <button id="removeOrder" type="button" class="btn btn-primary" data-bs-dismiss="modal">Да</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/stacked-menu.min.js"></script>
+    <script src="js/theme.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.app-main{
+    padding-top: 0;
+}
+.page-inner{
+    padding: 0;
+    padding-top: 10px;
+}
+.sidebar-backdrop{
+    top: 0;
+}
+.has-sidebar-open .page-sidebar{
+    top: 0;
+}
+.btn-secondary.focus, .btn-secondary:focus{
+    border-color: #222230;
+    box-shadow: 0 0 0 1px #222230;
+}
+.form-control:focus{
+    border-color: #222230;
+    box-shadow: 0 0 0 1px #222230;
+}
