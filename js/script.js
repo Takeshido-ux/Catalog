@@ -27,11 +27,11 @@ $('#addOrder').click(function(){
         $('#orderBox').append(
         `
         <tr>
-            <td class="align-middle info-order" colspan="2">${Order.name}</td>
-            <td class="align-middle info-order"> ${Order.inventory} </td>
-            <td class="align-middle info-order"> ${Order.variants} </td>
-            <td class="align-middle info-order"> ${Order.price} RUB </td>
-            <td class="align-middle info-order"> ${orderDate} </td>
+            <td id="name" class="align-middle info-order" colspan="2">${Order.name}</td>
+            <td id="inventory" class="align-middle info-order"> ${Order.inventory}</td>
+            <td id="variants" class="align-middle info-order"> ${Order.variants}</td>
+            <td id="price" class="align-middle info-order">${Order.price}</td>
+            <td class="align-middle info-order">${orderDate}</td>
             <td class="align-middle text-right">
             <a href="#" id="changeOrderTo" class="btn btn-sm btn-icon btn-secondary" data-toggle="sidebar">
                 <i class="fa fa-pencil-alt"></i> 
@@ -65,6 +65,10 @@ $('#exitOrder').click(function(){
 let changeOrder;
 $('#orderBox').on('click', '#changeOrderTo', function(){
     changeOrder = $(this).parents('tr');
+    inptName.val($(this).parents('tr').find('#name').text());
+    inptInventory.val($(this).parents('tr').find('#inventory').text());
+    inptVariants.val($(this).parents('tr').find('#variants').text());
+    inptPrice.val($(this).parents('tr').find('#price').text());
     $('#changeOrder').removeClass('d-none');
     $('#addOrder').addClass('d-none');
 })
@@ -84,10 +88,10 @@ $('#changeOrder').click(function(){
         changeOrder.html(
             `
                 <td class="align-middle info-order" colspan="2">${Order.name}</td>
-                <td class="align-middle info-order"> ${Order.inventory} </td>
-                <td class="align-middle info-order"> ${Order.variants} </td>
-                <td class="align-middle info-order"> ${Order.price} RUB </td>
-                <td class="align-middle info-order"> ${orderDate} </td>
+                <td class="align-middle info-order">${Order.inventory}</td>
+                <td class="align-middle info-order">${Order.variants}</td>
+                <td class="align-middle info-order">${Order.price}</td>
+                <td class="align-middle info-order">${orderDate}</td>
                 <td class="align-middle text-right">
                 <a href="#" id="changeOrderTo" class="btn btn-sm btn-icon btn-secondary" data-toggle="sidebar">
                     <i class="fa fa-pencil-alt"></i> 
