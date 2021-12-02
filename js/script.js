@@ -26,13 +26,13 @@ $('#addOrder').click(function(){
     if(Order.name && Order.inventory && Order.inventory && Order.price){
         $('#orderBox').append(
         `
-        <tr>
+        <tr class="order" data-name="${Order.name}" data-inventory="${Order.inventory}" data-variants="${Order.variants}" data-price="${Order.price}" data-Date="${orderDate}">
             <td id="name" class="align-middle info-order" colspan="2">${Order.name}</td>
-            <td id="inventory" class="align-middle info-order"> ${Order.inventory}</td>
-            <td id="variants" class="align-middle info-order"> ${Order.variants}</td>
+            <td id="inventory" class="align-middle info-order">${Order.inventory}</td>
+            <td id="variants" class="align-middle info-order">${Order.variants}</td>
             <td id="price" class="align-middle info-order">${Order.price}</td>
             <td class="align-middle info-order">${orderDate}</td>
-            <td class="align-middle text-right">
+            <td class="align-middle text-center">
             <a href="#" id="changeOrderTo" class="btn btn-sm btn-icon btn-secondary" data-toggle="sidebar">
                 <i class="fa fa-pencil-alt"></i> 
                 <span class="sr-only">Edit</span>
@@ -92,7 +92,7 @@ $('#changeOrder').click(function(){
                 <td class="align-middle info-order">${Order.variants}</td>
                 <td class="align-middle info-order">${Order.price}</td>
                 <td class="align-middle info-order">${orderDate}</td>
-                <td class="align-middle text-right">
+                <td class="align-middle text-center">
                 <a href="#" id="changeOrderTo" class="btn btn-sm btn-icon btn-secondary" data-toggle="sidebar">
                     <i class="fa fa-pencil-alt"></i> 
                     <span class="sr-only">Edit</span>
@@ -120,9 +120,130 @@ $('#removeOrder').click(function(){
 
 
 $('#sortBtnName').click(function(){
-    
+    let orderBox = document.querySelector('#orderBox');
+    if($(this).hasClass('sorting_asc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(orderBox.children[i].getAttribute('data-name') > $('.order')[j].getAttribute('data-name')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+    else if($(this).hasClass('sorting_desc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(orderBox.children[i].getAttribute('data-name') < $('.order')[j].getAttribute('data-name')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+})
+$('#sortBtnItr').click(function(){
+    let orderBox = document.querySelector('#orderBox');
+    if($(this).hasClass('sorting_asc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                console.log(i,j)
+                if(+orderBox.children[i].getAttribute('data-inventory') > +$('.order')[j].getAttribute('data-inventory')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+    else if($(this).hasClass('sorting_desc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(+orderBox.children[i].getAttribute('data-inventory') < +$('.order')[j].getAttribute('data-inventory')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
 })
 
+
+$('#sortBtnVr').click(function(){
+    let orderBox = document.querySelector('#orderBox');
+    if($(this).hasClass('sorting_asc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(+orderBox.children[i].getAttribute('data-variants') > +$('.order')[j].getAttribute('data-variants')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+    else if($(this).hasClass('sorting_desc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(+orderBox.children[i].getAttribute('data-variants') < +$('.order')[j].getAttribute('data-variants')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+})
+
+
+$('#sortBtnPrs').click(function(){
+    let orderBox = document.querySelector('#orderBox');
+    if($(this).hasClass('sorting_asc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(+orderBox.children[i].getAttribute('data-price') > +$('.order')[j].getAttribute('data-price')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+    else if($(this).hasClass('sorting_desc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(+orderBox.children[i].getAttribute('data-price') < +$('.order')[j].getAttribute('data-price')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+})
+
+
+$('#sortBtnDate').click(function(){
+    let orderBox = document.querySelector('#orderBox');
+    if($(this).hasClass('sorting_asc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(+orderBox.children[i].getAttribute('data-Date') > +$('.order')[j].getAttribute('data-Date')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+    else if($(this).hasClass('sorting_desc')){
+        for(let i = 0; i < orderBox.children.length; i++){
+            for(let j = i; j < orderBox.children.length; j++){
+                if(+orderBox.children[i].getAttribute('data-Date') < +$('.order')[j].getAttribute('data-Date')){
+                    replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
+                    insertAfter(replacedNode, orderBox.children[i])
+                }
+            }
+        }
+    }
+})
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
 
 
