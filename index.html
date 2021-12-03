@@ -21,11 +21,12 @@
                                 <table id="myTable" class="table dataTable no-footer">
                                     <thead>
                                       <tr>
-                                        <th id="sortBtnName" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="2"> Name </th>
+                                        <th id="sortBtnName" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Name </th>
                                         <th id="sortBtnItr" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Inventory </th>
                                         <th id="sortBtnVr" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Variants </th>
                                         <th id="sortBtnPrs" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Prices </th>
-                                        <th id="sortBtnDate" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Date </th>
+                                        <th id="sortBtnDateAdd" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Date Add </th>
+                                        <th id="sortBtnDateChange" class="align-middle sortBtn sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1"> Date Change </th>
                                         <th class="align-middle text-middle"> Действия </th>
                                       </tr>
                                     </thead>
@@ -72,6 +73,18 @@
             </div>
           </div>
         </div>
+    </div>
+    <div class="container">
+        <button id="showOrder" type="button" class="btn btn-outline-dark">Показать список товаров</button>
+        <div class="page-inner">
+            <div class="page-section">
+                <table id="myTable" class="table dataTable no-footer">
+                    <thead></thead>
+                    <tbody id="arrayOrder"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     </div>
 
 
