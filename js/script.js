@@ -11,11 +11,13 @@ let Order = {
     price: inptPrice.val()
 };
 let arrayOrder = [];
+let arrayDate = [];
 
 
 
 $('#addOrder').click(function(){
     dateAdd = new Date().toLocaleString();
+    arrayDate.push(dateAdd);
     let obj = {
         id: id,
         name: inptName.val(),
@@ -73,6 +75,10 @@ $('#addOrder').click(function(){
 $('#addBtnTo').click(function(){
     $('#addOrder').removeClass('d-none');
     $('#changeOrder').addClass('d-none');
+    inptName.val('');
+    inptInventory.val('');
+    inptVariants.val('');
+    inptPrice.val('');
 })
 $('#exitOrder').click(function(){
     inptName.val('');
@@ -83,6 +89,21 @@ $('#exitOrder').click(function(){
 
 
 let changeOrder;
+let getDate = () => {
+    for(let i = 0; i < arrayDate.length; i++){
+        if(i == changeOrder.attr('id')){
+            return `<td class="align-middle info-order">${arrayDate[i]}</td>`
+        }
+    }
+}
+let getDate2 = () => {
+    for(let i = 0; i < arrayDate.length; i++){
+        if(i == changeOrder.attr('id')){
+            return arrayDate[i]
+        }
+    }
+}
+
 $('#orderBox').on('click', '#changeOrderTo', function(){
     changeOrder = $(this).parents('tr');
     inptName.val($(this).parents('tr').find('#name').text());
@@ -122,20 +143,22 @@ $('#changeOrder').click(function(){
         changeOrder.attr('data-inventory', Order.inventory)
         changeOrder.attr('data-variants', Order.variants)
         changeOrder.attr('data-price', Order.price)
+        changeOrder.attr('data-dateAdd', getDate2())
+        changeOrder.attr('data-dateChange', dateChange)
         changeOrder.html(
             `
             <td id="name" class="align-middle info-order" colspan="1">${Order.name}</td>
             <td id="inventory" class="align-middle info-order">${Order.inventory}</td>
             <td id="variants" class="align-middle info-order">${Order.variants}</td>
             <td id="price" class="align-middle info-order">${Order.price}</td>
-            <td class="align-middle info-order">${dateAdd}</td>
+            ${getDate()}
             <td class="align-middle info-order">${dateChange}</td>
                 <td class="align-middle text-center">
                 <a href="#" id="changeOrderTo" class="btn btn-sm btn-icon btn-secondary" data-toggle="sidebar">
                     <i class="fa fa-pencil-alt"></i> 
                     <span class="sr-only">Edit</span>
                 </a> 
-                    <a href="#" id="removeOrder" class="btn btn-sm btn-icon btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <a href="#" id="removeOrderTo" class="btn btn-sm btn-icon btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="far fa-trash-alt"></i> 
                         <span class="sr-only">Remove</span>
                     </a>
@@ -147,6 +170,7 @@ $('#changeOrder').click(function(){
         alert('Введите все значения!')
     }
     $(this).addClass('d-none')
+    dateChange = '';
 })
 
 $('#orderBox').on('click', '#removeOrderTo', function(){
@@ -265,7 +289,6 @@ $('#sortBtnDateAdd').click(function(){
                 let dateNext = orderBox.children[j].getAttribute('data-dateAdd');
                 datePrev = Date.parse(datePrev);
                 dateNext = Date.parse(dateNext);
-                console.log(datePrev,dateNext)
                 if( datePrev > dateNext){
                     replacedNode = orderBox.replaceChild(orderBox.children[j], orderBox.children[i]);
                     insertAfter(replacedNode, orderBox.children[i])
@@ -288,6 +311,7 @@ $('#sortBtnDateAdd').click(function(){
         }
     }
 })
+
 $('#sortBtnDateChange').click(function(){
     let orderBox = document.querySelector('#orderBox');
     if($(this).hasClass('sorting_asc')){
